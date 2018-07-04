@@ -7,10 +7,10 @@ class ProductTable extends React.Component {
     this.props.products.forEach((product) => {
       rows.push(
         <ProductRow
-          product={product} />
+          product={product} 
+          key={product.name} />
       );
-    });
-
+    });    
     return (
       <table>
         <thead>
@@ -32,4 +32,4 @@ const PRODUCTS = [
   {name: 'Item 4', price: '$15.00'},
 ];
 
-export default ProductRow;
+export default ProductTable;

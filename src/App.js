@@ -5,9 +5,7 @@ import ProductTable from './components/ProductTable'
 class App extends Component {
   render () {
     return (
-      <div>
-         <ProductTable products={this.props.products} />
-      </div>
+      <ProductTable products={this.props.products}   />
     );
 
   }
