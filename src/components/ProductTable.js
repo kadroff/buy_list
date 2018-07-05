@@ -1,16 +1,16 @@
 import React from 'react'
 import ProductRow  from './ProductRow'
 
-class ProductTable extends React.Component {
-  render() {
+
+const ProductTable = ( { props } ) => {
     const rows = [];
-    this.props.products.forEach((product) => {
+    this.props.products.map((product) => {
       rows.push(
         <ProductRow
           product={product} 
           key={product.name} />
       );
-    });    
+    });     
     return (
       <table>
         <thead>
@@ -23,13 +23,5 @@ class ProductTable extends React.Component {
       </table>
     );
   }
-}
-
-const PRODUCTS = [
-  {name: 'Item 1', price: '$20.00'},
-  {name: 'Item 2', price: '$6.00'},
-  {name: 'Item 3', price: '$49.00'},
-  {name: 'Item 4', price: '$15.00'},
-];
 
 export default ProductTable;
