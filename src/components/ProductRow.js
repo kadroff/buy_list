@@ -4,16 +4,18 @@ class ProductRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0
+      count: 1,
+      price: this.props.product.price
     };
 
     this.countAdd = this.countAdd.bind(this);
     this.countReduce = this.countReduce.bind(this);
   }
-  
   countAdd() {
+    var new_price = this.state.price * 2;
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
+      price: new_price
     })
   }
 
@@ -35,7 +37,7 @@ class ProductRow extends React.Component {
           <p>{this.state.count}</p>
           <input onClick={this.countAdd} type="button" value="+" />
         </li>
-        <li className='price'>{product.price}</li>
+        <li className='price'>${this.state.price}</li>
       </ul>
     )
   }
