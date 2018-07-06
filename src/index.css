@@ -4,12 +4,49 @@ body {
   font-family: sans-serif;
 }
 
-.product_list {
-  list-style-type: none;
+
+/* Section Table */
+table {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }
 
-.Maim
+tr { 
+  display: flex;
+}
+
+.order {
+  flex-grow: 2;
+}
+
+.edit {
+  flex-grow: 2;
+}
+
+.product_list {
+  list-style-type: none;
+  display: flex;
+}
+
+.product_name {
+  flex-grow: 6;
+}
 
 .price {
+  flex-grow: 2;
   margin-right: 10px;
+}
+
+.counter {
+  flex-grow: 1;
+}
+
+.product_list {
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+.product_list li {
+  padding: 10px;
 }
