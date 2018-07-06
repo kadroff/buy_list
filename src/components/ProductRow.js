@@ -23,8 +23,11 @@ class ProductRow extends React.Component {
 
   countReduce() {
     if (this.state.count > 0) {
+      var firstPrice = parseInt(this.props.product.price);
+      var new_price = parseInt(this.state.price) - firstPrice;
       this.setState({
-        count: this.state.count - 1
+        count: this.state.count - 1,
+        price: new_price
       })
     }
   }
