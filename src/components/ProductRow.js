@@ -12,11 +12,13 @@ class ProductRow extends React.Component {
     this.countReduce = this.countReduce.bind(this);
   }
   countAdd() {
-    var new_price = this.state.price * 2;
+    var firstPrice = parseInt(this.props.product.price);
+    var new_price = parseInt(this.state.price) + firstPrice;
     this.setState({
       count: this.state.count + 1,
       price: new_price
     })
+    console.log(this.props.product.price);
   }
 
   countReduce() {
