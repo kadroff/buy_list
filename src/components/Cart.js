@@ -8,16 +8,32 @@ class Cart extends React.Component {
       products: props.products,
       totalSum: 0,
     };
+    this.onPlus = this.onPlus.bind(this);
+    this.onMinus = this.onMinus.bind(this);
   }
 
   componentDidMount() {
     this.calculateTotal();
   }
 
-  onPlus() {
+  onPlus(index) {
+    const products = this.state.products;
+    products[index].count += 1;
     this.setState({
-      products: this.state.products.count++
-    }) 
+      products: products
+    })
+    this.calculateTotal();
+  }
+
+  onMinus(index) {
+    const products = this.state.products;
+    if (products[index].count > 1) {
+      products[index].count -= 1;
+    }
+    this.setState({
+      products: products
+    })
+    this.calculateTotal();
   }
 
   calculateTotal() {
@@ -33,20 +49,22 @@ class Cart extends React.Component {
 
   render() {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th className="order">Order</th>
-            <th className="edit">Edit Cart</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.products.map((product) => 
-            <Product name={product.name} price={product.price} count={product.count}/>
-          )}
-          <h1>{this.state.totalSum}</h1>
-        </tbody>
-      </table>
+      <div className="cart">
+        <table>
+          <thead>
+            <tr>
+              <th className="order">Order</th>
+              <th className="edit">Edit Cart</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.products.map((product, index) => 
+              <Product index={index} onPlus={this.onPlus} onMinus={this.onMinus} name={product.name} price={product.price} count={product.count}/>
+            )}
+          </tbody>
+        </table>
+        <h1>{this.state.totalSum}</h1>
+      </div>
     );
   }
 }

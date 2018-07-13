@@ -8,11 +8,11 @@ class ProductRow extends React.Component {
     this.countReduce = this.countReduce.bind(this);
   }
   countAdd() {
-      this.props.onPlus()
+    this.props.onPlus(this.props.index);
   }
 
   countReduce() {
-    this.props.onMinus()
+    this.props.onMinus(this.props.index);
   }
 
   render() {
@@ -26,7 +26,7 @@ class ProductRow extends React.Component {
             <p>{this.props.count}</p>
             <input onClick={this.countAdd} type="button" value="+" />
           </li>
-          <li className='price'>${this.props.price}</li>
+          <li className='price'>${this.props.price * this.props.count}</li>
         </ul>
       </div>
     )
