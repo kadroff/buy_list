@@ -1,15 +1,13 @@
-import React from 'react'
-import Product  from './Product'
+import React from 'react';
+import Product  from './Product';
 
 class Cart extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       products: props.products,
-      totalSum: 0,
+      totalSum: 0
     };
-    this.onPlus = this.onPlus.bind(this);
-    this.onMinus = this.onMinus.bind(this);
   }
 
   componentDidMount() {
@@ -58,8 +56,14 @@ class Cart extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.products.map((product, index) => 
-              <Product index={index} onPlus={this.onPlus} onMinus={this.onMinus} name={product.name} price={product.price} count={product.count}/>
+            {this.state.products.map((product, index) =>
+              <Product onPlus={() => this.onPlus(index)}
+                       onMinus={() => this.onMinus(index)}
+                       name={product.name}
+                       price={product.price}
+                       count={product.count}
+                       key={index}
+              />
             )}
           </tbody>
         </table>
