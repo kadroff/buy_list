@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from './Product';
+import ProductContainer from '../containers/ProductContainer';
 import { REDUCE_PRODUCT_COUNT, ADD_PRODUCT_COUNT } from '../constants/constants';
 
 const Cart = ( { products, totalSum } ) => {
@@ -14,7 +14,8 @@ const Cart = ( { products, totalSum } ) => {
         </thead>
         <tbody>
           {products.map((product, index) =>
-            <Product
+            <ProductContainer
+              index = {index}
               name = {product.name}
               price = {product.price}
               count = {product.count}

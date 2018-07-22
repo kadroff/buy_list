@@ -1,14 +1,15 @@
 import React from 'react';
+import { ADD_PRODUCT_COUNT, REDUCE_PRODUCT_COUNT } from '../constants/constants';
 
-const Product = ( { name, price, count, onPlus, onMinus } ) => {
+const Product = ( { index, name, price, count,  changeProductCount } ) => {
   return (
     <div>
       <ul className="product_list">
         <li className="product_name">{name}</li>
         <li className="counter"> 
-          <input onClick={onMinus} type="button" value="-" />
+          <input onClick={() => changeProductCount( index, REDUCE_PRODUCT_COUNT )} type="button" value="-" />
           <p>{count}</p>
-          <input onClick={onPlus} type="button" value="+" />
+          <input onClick={() => changeProductCount( index, ADD_PRODUCT_COUNT )} type="button" value="+" />
         </li>
         <li className='price'>${price}</li>
       </ul>
